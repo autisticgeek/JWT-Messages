@@ -56,7 +56,7 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Container>
-        <Stack height="100vh" justifyContent="center" flex={1}>
+        <Stack minHeight="100vh" justifyContent="center" flex={1}>
           <Box>
             <TextField
               fullWidth
