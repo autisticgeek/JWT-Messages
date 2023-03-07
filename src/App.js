@@ -75,7 +75,6 @@ function App() {
             </Button>
             <TextField
               fullWidth
-              multiline
               label="Common Key"
               value={key}
               onChange={(e) => setKey(e.target.value)}
