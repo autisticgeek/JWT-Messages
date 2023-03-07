@@ -7,7 +7,7 @@ import {
   TextField,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import * as jose from "jose";
 import { Buffer } from "buffer";
 
@@ -55,53 +55,55 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Container><Stack height="100vh" justifyContent="center" flex={1}>
-        <Box>
-          <TextField
-            fullWidth
-            label="Encoded"
-            multiline
-            value={encoded}
-            onChange={(e) => setEncoded(e.target.value)}
-          />
-        </Box>
-        <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
-          <Button variant="contained" onClick={() => _decoder()}>
-            Decode
-          </Button>
-          <Button variant="contained" onClick={() => _encoder()}>
-            Encode
-          </Button>
-          <TextField
-            fullWidth
-            multiline
-            label="Common Key"
-            value={key}
-            onChange={(e) => setKey(e.target.value)}
-          />
-          <Button variant="contained" color={verified ? "success" : "error"}>
-            {verified ? "Valid" : "Invalid"}
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              setEncoded("");
-              setMessage("");
-              setVerified(false);
-            }}
-          >
-            Clear
-          </Button>
+      <Container>
+        <Stack height="100vh" justifyContent="center" flex={1}>
+          <Box>
+            <TextField
+              fullWidth
+              label="Encoded"
+              multiline
+              value={encoded}
+              onChange={(e) => setEncoded(e.target.value)}
+            />
+          </Box>
+          <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
+            <Button variant="contained" onClick={() => _decoder()}>
+              Decode
+            </Button>
+            <Button variant="contained" onClick={() => _encoder()}>
+              Encode
+            </Button>
+            <TextField
+              fullWidth
+              multiline
+              label="Common Key"
+              value={key}
+              onChange={(e) => setKey(e.target.value)}
+            />
+            <Button variant="contained" color={verified ? "success" : "error"}>
+              {verified ? "Valid" : "Invalid"}
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                setEncoded("");
+                setMessage("");
+                setVerified(false);
+              }}
+            >
+              Clear
+            </Button>
+          </Stack>
+          <Box sx={{ pt: 2 }}>
+            <TextField
+              fullWidth
+              multiline
+              label="Decoded"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+          </Box>
         </Stack>
-        <Box sx={{ pt: 2 }}>
-          <TextField
-            fullWidth
-            multiline
-            label="Decoded"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </Box></Stack>
       </Container>
     </ThemeProvider>
   );
