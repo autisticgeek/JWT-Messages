@@ -57,13 +57,12 @@ function App() {
       setVerified(false);
     }
   };
-  
 
   const _encoderToClipboard = async () => {
     try {
-      const msg = messageField.current.value; 
-      setMessage(msg);                        
-      const token = await signJwt({ message: msg }); 
+      const msg = messageField.current.value;
+      setMessage(msg);
+      const token = await signJwt({ message: msg });
       setEncoded(token);
       await navigator.clipboard.writeText(token);
       setVerified(!!token);
@@ -75,7 +74,6 @@ function App() {
       setVerified(false);
     }
   };
-  
 
   const _decodeFromClipboard = async () => {
     try {
@@ -84,7 +82,6 @@ function App() {
       await _decoder(token); // pass token directly to avoid race
       setSnackbarMsg("Token pasted from clipboard and decoded!");
       setSnackbarOpen(true);
-      
     } catch (err) {
       setSnackbarMsg("Error: Could not read from clipboard.");
       setSnackbarOpen(true);
@@ -134,6 +131,7 @@ function App() {
                   setEncoded("");
                   setMessage("");
                   setVerified(false);
+                  messageField.current.value = "";
                 }}
               >
                 Clear
@@ -141,11 +139,29 @@ function App() {
             </Grid>
           </Grid>
 
-          <Box>{message}</Box>
+          <Box
+            sx={{
+              width: "100%",
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+              overflowWrap: "anywhere",
+            }}
+          >
+            {message}
+          </Box>
           <Alert severity={verified ? "success" : "error"}>
             {verified ? "Token is valid" : "Token is invalid"}
           </Alert>
-          <Box>{encoded}</Box>
+          <Box
+            sx={{
+              width: "100%",
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+              overflowWrap: "anywhere",
+            }}
+          >
+            {encoded}
+          </Box>
         </Stack>
       </Container>
     </ThemeProvider>
