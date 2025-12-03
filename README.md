@@ -3,7 +3,12 @@
 A simple React app for encoding and decoding messages using JSON Web Tokens (JWT).
 This project demonstrates how to sign messages with a shared secret key, copy them to the clipboard, and verify/decode tokens pasted back in.
 
-Features:
+Live Demo
+---------
+Try it instantly here: https://message.pinyon.dev/
+
+Features
+--------
 - Sign messages with a shared key using HS256 (HMAC SHA-256)
 - Copy signed tokens directly to the clipboard
 - Paste & decode tokens from the clipboard to verify authenticity
@@ -19,7 +24,7 @@ Prerequisites:
 
 Installation:
 1. Clone the repo and install dependencies:
-   git clone https://github.com/your-username/jwt_message.git
+   git clone https://github.com/autisticgeek/jwt_message.git
    cd jwt_message
    npm install
 
