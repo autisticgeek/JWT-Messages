@@ -58,10 +58,13 @@ Dependencies
 
 Notes
 -----
-- This app is for educational/demo purposes.
-- Do not use weak keys (like "password") in production.
+- This app was designed as a simple way to verify the sender of a message.
+- It uses a shared secret key so that recipients can confirm a message truly came from the intended sender.
+- The focus is on trust and authenticity: if the token verifies, the recipient knows the sender is genuine.
+- Keys can be short and human-readable for convenience, though longer keys provide stronger security.
 - Clipboard access requires user permission in some browsers.
 - webpack-dev-server is used only in development; production builds are static.
+
 
 License
 -------
